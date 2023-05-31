@@ -1,3 +1,11 @@
+/* --french-gray: #CBCBD8ff;
+--cadet-gray: #9C9DA2ff;
+--french-gray-2: #BCBFCBff;
+--ghost-white: #F0F1F6ff;
+--pear: #CAED4Dff; */
+
+
+
 .crypto-card {
     display: flex;
     align-items: center;
@@ -24,11 +32,12 @@
 }
 
 .crypto-heading p.symbol {
+    text-transform: uppercase;
     margin-top: 5px;
-    font-size: 14px;
+    font-size: 15px;
 }
 
 .crypto-heading h3.crypto-price {
-    margin-top: -60px;
+    margin-top: -70px;
     margin-left: auto;
 }

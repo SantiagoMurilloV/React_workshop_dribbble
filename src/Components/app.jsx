@@ -1,11 +1,12 @@
 import React from 'react';
 import CryptoList from './CriptoList';
 
+// import '../styles/App.css'
+
 export const App = () => {
     return (
-        <div>
-            
-            <CryptoList />
+        <div className='App'>
+            <CryptoList /> 
         </div>
     );
 };

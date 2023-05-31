@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
-import { FaSearch } from 'react-icons/fa';
+// import { FaSearch } from 'react-icons/fa';
 import CryptoCard from './CriptoCards';
+import { Graph } from './grap';
 import '../styles/CriptoList.css';
 
 const CryptoList = () => {
     const [cryptoList, setCryptoList] = useState([]);
     const [searchInput, setSearchInput] = useState('');
+
 
     const fetchCryptoList = async () => {
         try {
@@ -23,9 +25,12 @@ const CryptoList = () => {
         fetchCryptoList();
     }
 
-    const filteredCoins = searchInput
-        ? cryptoList.filter((coin) =>
-            coin.name.toLowerCase().includes(searchInput.toLowerCase())
+
+    const filtered = searchInput
+        ? cryptoList.filter(
+            (coin) =>
+                coin.name.toLowerCase().includes(searchInput.toLowerCase()) ||
+                coin.symbol.toLowerCase().includes(searchInput.toLowerCase())
         )
         : cryptoList;
 
@@ -33,22 +38,24 @@ const CryptoList = () => {
         <div className="criptoContainer">
             <h1>Control panel</h1>
             <div className="search-container">
-                <input className='search-input'
+                <input
+                    className="search-input"
                     type="text"
-                    placeholder="Search..."
+                    placeholder="Enter your search request"
                     value={searchInput}
                     onChange={(e) => setSearchInput(e.target.value)}
                 />
-                {/* <button className="search-button" onClick={fetchCryptoList}> */}
-                    {/* <FaSearch /> */}
-                {/* </button> */}
             </div>
-            <h2>Crypto currencies</h2>
-            <p className='line'>__________________________________________________</p>
-            
+            <h2 className="sub">Crypto currencies</h2>
+            <p className="line">___________________________________________________</p>
+
             <div className="crypto-list">
-                {filteredCoins.map((crypto) => (
-                    <div className="crypto-card" key={crypto.id}>
+                {filtered.map((crypto) => (
+                    <div
+                        className="crypto-card"
+                        key={crypto.id}
+                        
+                    >
                         <CryptoCard
                             name={crypto.name}
                             symbol={crypto.symbol}
@@ -58,6 +65,7 @@ const CryptoList = () => {
                     </div>
                 ))}
             </div>
+            <Graph/>
         </div>
     );
 };
